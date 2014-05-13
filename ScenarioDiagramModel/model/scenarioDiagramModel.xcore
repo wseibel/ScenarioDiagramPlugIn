@@ -1,0 +1,40 @@
+@GenModel(editDirectory="/ScenarioDiagramModel/src-edit", editorDirectory="/ScenarioDiagramModel/src-editor", testsDirectory="/ScenarioDiagramModel/src-tests")
+package de.uks.se.scenariodiagram
+
+import org.eclipse.emf.ecore.EClass
+import org.eclipse.emf.ecore.EAttribute
+import org.eclipse.emf.ecore.EReference
+import org.eclipse.emf.ecore.ENamedElement
+
+class ScenarioModel
+{
+	contains ScenarioObject[] containedScenarioObjects opposite parentModel
+}
+
+class ScenarioObject extends ENamedElement
+{
+	refers EClass objectType
+	container ScenarioModel parentModel opposite containedScenarioObjects
+	contains ScenarioAttribute[] attributes opposite object
+	contains ScenarioLink[] links opposite parent
+	refers ScenarioLink[] outgoingLinks opposite source
+	refers ScenarioLink[] incomingLinks opposite target
+}
+
+class ScenarioAttribute
+{
+	refers EAttribute attributeType
+	container ScenarioObject object opposite attributes
+	container ScenarioLink link opposite attributes
+	String value
+}
+
+class ScenarioLink extends ENamedElement
+{
+	refers EReference outgoingReference
+	refers EReference incomingReference
+	contains ScenarioAttribute[] attributes opposite link
+	container ScenarioObject parent opposite links
+	refers ScenarioObject source opposite outgoingLinks
+	refers ScenarioObject target opposite incomingLinks
+}

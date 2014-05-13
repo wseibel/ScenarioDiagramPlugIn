@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated scenarioDiagramModel -->
+      <package
+            uri="de.uks.se.scenariodiagram"
+            class="de.uks.se.scenariodiagram.ScenariodiagramPackage"
+            genModel="model/scenarioDiagramModel.xcore"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
+      <!-- @generated scenarioDiagramModel -->
+      <factory
+            uri="de.uks.se.scenariodiagram"
+            class="de.uks.se.scenariodiagram.provider.ScenariodiagramItemProviderAdapterFactory"
+            supportedTypes=
+              "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
+               org.eclipse.emf.edit.provider.IStructuredItemContentProvider
+               org.eclipse.emf.edit.provider.ITreeItemContentProvider
+               org.eclipse.emf.edit.provider.IItemLabelProvider
+               org.eclipse.emf.edit.provider.IItemPropertySource"/>
+   </extension>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated scenarioDiagramModel -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="de.uks.se.scenariodiagram.presentation.ScenariodiagramModelWizardID"
+            name="%_UI_ScenariodiagramModelWizard_label"
+            class="de.uks.se.scenariodiagram.presentation.ScenariodiagramModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/ScenariodiagramModelFile.gif">
+         <description>%_UI_ScenariodiagramModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated scenarioDiagramModel -->
+      <editor
+            id="de.uks.se.scenariodiagram.presentation.ScenariodiagramEditorID"
+            name="%_UI_ScenariodiagramEditor_label"
+            icon="icons/full/obj16/ScenariodiagramModelFile.gif"
+            extensions="scenariodiagram"
+            class="de.uks.se.scenariodiagram.presentation.ScenariodiagramEditor"
+            contributorClass="de.uks.se.scenariodiagram.presentation.ScenariodiagramActionBarContributor">
+      </editor>
+   </extension>
+
+</plugin>
